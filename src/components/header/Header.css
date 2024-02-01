@@ -162,3 +162,7 @@
       display: none;
     }
   }
+  .usericon{
+    width: 20px;
+    height:20px;
+  }

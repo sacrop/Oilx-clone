@@ -1,7 +1,11 @@
-import React,{Fragment} from 'react'
+import React,{Fragment, useState} from 'react'
 import Header from '../header/Header'
 import './Create.css'
 const Create = () => {
+  const [productName,setProductName]=useState("");
+  const[category,setCategory]=useState("");
+  const [Price,setPrice]=useState(0);
+  const [image,setImage]=useState(null);
   return (
     <Fragment>
       <Header />
@@ -15,7 +19,8 @@ const Create = () => {
               type="text"
               id="fname"
               name="Name"
-              defaultValue="John"
+              onChange={(e)=>{setProductName(e.target.value)}}
+              value={productName}
             />
             <br />
             <label htmlFor="fname">Category</label>
@@ -25,12 +30,13 @@ const Create = () => {
               type="text"
               id="fname"
               name="category"
-              defaultValue="John"
+              value={category} 
+              onChange={(e)=>setCategory(e.target.value)}
             />
             <br />
             <label htmlFor="fname">Price</label>
             <br />
-            <input className="input" type="number" id="fname" name="Price" />
+            <input className="input" type="number" id="fname" value={Price} name="Price" onChange={(e)=>{setPrice(e.target.value)}} />
             <br />
           </form>
           <br />

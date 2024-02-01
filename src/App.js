@@ -5,7 +5,7 @@ import { UserAuthContextProvider } from './components/context/UserAuthContext';
 import LoginPage from './pages/LoginPage';
 import SignUp from './pages/SignUp';
 import Home from './pages/Home'
-
+import Create from './components/create/Create';
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/signup' element={<SignUp/>}/>
+        <Route path='/create' element={<Create/>}/>
       </Routes> 
       </UserAuthContextProvider>
          

@@ -1,7 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import Logo from '../../assets/images/olx-logo.png';
 import './Signup.css';
-import { useUserAuth } from '../context/UserAuthContext';
+import { useUserAuth } from '../context/UserAuthContext'
+import { db} from '../firebase/ConfigFirebase';
+import { setDoc,doc } from "firebase/firestore";
+import { useNavigate,Link } from 'react-router-dom';
 const Signup = () => {
 
     const [Username,setUsername]=useState("");
@@ -10,18 +13,26 @@ const Signup = () => {
     const [PhoneNumber,setPhoneNumber]=useState("");
     const [Password,setPassword]=useState("");
     const [error,setError]=useState("");
-    const handleSubmit=async (e)=>{
+    const navigate=useNavigate();
+    const handleSubmit=useCallback(async (e)=>{
       e.preventDefault();
       setError("")
       try {
-       await signUp(Email,Password)
-         
+       const {user}=await signUp(Email,Password)
+       console.log(user.uid)
+       const userdoc=doc(db,"users",user.uid);
+       await setDoc(userdoc,{
+          username: Username,
+          phoneNumber: PhoneNumber,
+          email: Email 
+        });
+       navigate('/')   
       } catch (error) {
         setError(error.message);
         console.log(error)
       }
-
     }
+      ,[db,navigate,Email,Password,setError,signUp])
   return (
     <div>
       <h4 className='text-danger text-center my-3' >{error}</h4>
@@ -79,7 +90,7 @@ const Signup = () => {
           <br />
           <button type='submit'>Signup</button>
         </form>
-        <a>Login</a>
+        <Link to="/login"><a>Login</a></Link>
       </div>
     </div>
   )

@@ -6,7 +6,9 @@ import {
      onAuthStateChanged
  } from "firebase/auth";
 import { auth } from "../firebase/ConfigFirebase";
+
 const UserAuthContext=createContext();
+
 
 export function UserAuthContextProvider({children}){
     const [user,setUser]=useState({});
@@ -31,7 +33,7 @@ export function UserAuthContextProvider({children}){
     },[])
     
     return (
-        <UserAuthContext.Provider value={{user,signUp}}>
+        <UserAuthContext.Provider value={{user,signUp,login,logout}}>
             {children}
         </UserAuthContext.Provider>
     );
