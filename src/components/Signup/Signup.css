@@ -1,0 +1,49 @@
+.signupParentDiv {
+    border: 1px solid black;
+    width: max-content;
+    padding: 40px; /* Increased padding for a nicer view */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px; /* Increased border-radius for smoother corners */
+    background-color: #f0f0f0; /* Added background color for better contrast */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added box shadow for depth */
+}
+
+.signupParentDiv .input {
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    outline-color: transparent;
+    padding: 8px; /* Added padding to input fields */
+    margin-bottom: 10px; /* Added margin between input fields */
+    width: 100%; /* Ensuring input fields take up full width */
+}
+
+.signupParentDiv button {
+    width: 100%;
+    height: 48px;
+    background-color: #002f34;
+    color: whitesmoke;
+    font-weight: 900;
+    border: none; /* Removed border for a cleaner look */
+    border-radius: 6px; /* Added border-radius to match the form */
+    cursor: pointer; /* Added cursor pointer */
+    transition: background-color 0.3s, color 0.3s; /* Added smooth transition */
+}
+
+.signupParentDiv button:hover {
+    background-color: white;
+    color: #002f34;
+    border: 2px solid #002f34;
+}
+
+.signupParentDiv a {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    color: #002f34; /* Changed link color to match button hover */
+    text-decoration: none; /* Removed default underline */
+    margin-top: 10px; /* Added margin to separate from button */
+}
