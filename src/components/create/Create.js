@@ -34,7 +34,7 @@ const Create = () => {
         name:productName,
         category:category,
         price:Price,
-        imageUrl:image+"",
+        imageUrl:imageUrl,
         userId:user.uid,
         createdAt:date.toDateString()
        })
