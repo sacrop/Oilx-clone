@@ -85,4 +85,8 @@
     font-size: 24px;
     color: #002f34;
   }
+
+  .card:hover{
+    transform: scale(1.08);
+  }
   

@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import Heart from '../../assets/Heart'
 import './Post.css'
-import postImg from '../../assets/images/R15V3.jpg'
 import { collection, getDocs, where, query } from 'firebase/firestore'
 import { db } from '../firebase/ConfigFirebase'
 import { useUserAuth } from '../context/UserAuthContext'
 import { shuffle } from 'lodash'
+import { usePostDetail } from '../store/PostContext'
+import { useNavigate } from 'react-router-dom'
 const Post = () => {
   const [products, setProducts] = useState([]);
   const shuffledproducts=shuffle(products)
   const { user } = useUserAuth();
+  const {setPostDetails}=usePostDetail();
+  const navigate=useNavigate();
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -44,6 +47,10 @@ const Post = () => {
               return (
                 <div key={id}
                   className="card"
+                  onClick={()=>{
+                    setPostDetails(product) ;
+                    navigate("/viewpost")
+                  }}
                 >
                   <div className="favorite">
                     <Heart></Heart>
@@ -75,6 +82,10 @@ const Post = () => {
               return (
                 <div key={id}
                   className="card"
+                  onClick={()=>{
+                    setPostDetails(product) ;
+                    navigate("/viewpost")
+                  }}
                 >
                   <div className="favorite">
                     <Heart></Heart>
